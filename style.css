@@ -1,3 +1,4 @@
+
 /* CSS Reset & Variables */
 :root {
     --black: #0d0d0d;
@@ -84,18 +85,21 @@ ul { list-style: none; }
     background-color: var(--medium-gray);
     color: var(--white);
     text-align: center;
-    padding: 5px 0;
+    padding: 6px 15px;
     font-size: 12px;
     letter-spacing: 1px;
+    position: relative;
+    z-index: 101;
 }
 
-/* Navigation */
+/* Navigation Header */
 header {
     position: absolute;
-    top: 30px;
+    top: 29px; /* Sits immediately under the top bar */
+    left: 0;
     width: 100%;
     z-index: 100;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .nav-container {
@@ -107,8 +111,8 @@ header {
 }
 
 .logo {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 22px;
+    font-weight: 800;
     letter-spacing: 1px;
 }
 
@@ -126,16 +130,19 @@ header {
     display: flex;
     align-items: center;
     gap: 8px;
+    font-size: 14px;
 }
 
 /* Hero Section */
 .hero {
     position: relative;
-    height: 80vh;
-    min-height: 500px;
+    min-height: 480px;
+    height: 60vh; /* Controlled height for desktop */
+    max-height: 650px;
     background: url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1920&auto=format&fit=crop') center/cover;
     display: flex;
     align-items: center;
+    padding-top: 60px; /* Offset for header positioning */
 }
 
 .hero::before {
@@ -149,12 +156,13 @@ header {
     position: relative;
     z-index: 10;
     padding-left: 10%;
+    padding-right: 5%;
     color: var(--white);
     max-width: 600px;
 }
 
 .hero-content h1 {
-    font-size: 48px;
+    font-size: 42px;
     line-height: 1.1;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -162,14 +170,14 @@ header {
 
 .hero-content h1 span {
     display: block;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: normal;
     margin-bottom: 5px;
 }
 
 .hero-content p {
-    font-size: 16px;
-    margin-bottom: 30px;
+    font-size: 15px;
+    margin-bottom: 25px;
     color: var(--light-gray);
 }
 
@@ -417,17 +425,71 @@ footer {
     color: #aaaaaa;
 }
 
-/* Responsive Design */
-@media (max-width: 900px) {
-    .about-grid, .location-content { grid-template-columns: 1fr; }
-    .products-grid { grid-template-columns: 1fr; }
-    .categories-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .nav-links { display: none; } /* Mobile menu simplified */
+/* Responsive Fixes for Mobile Devices */
+@media (max-width: 768px) {
+    .top-bar {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+
+    header {
+        top: 23px;
+    }
+
+    .nav-container {
+        padding: 10px 5%;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .contact-phone {
+        font-size: 11px;
+    }
+
+    .nav-links {
+        display: none; /* Keeps top bar header clean on phone viewport */
+    }
+
+    .hero {
+        height: auto;
+        min-height: 340px; /* Reduced vertical space for hero on mobile */
+        padding: 90px 0 40px 0;
+    }
+
+    .hero-content {
+        padding-left: 5%;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content p {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .about-grid, .location-content { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .products-grid { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .categories-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .footer-grid { 
+        grid-template-columns: 1fr 1fr; 
+    }
 }
 
-@media (max-width: 600px) {
-    .footer-grid { grid-template-columns: 1fr; }
-    .hero-content h1 { font-size: 36px; }
-}
-
+@media (max-width: 480px) {
+    .footer-grid { 
+        grid-template-columns: 1fr; 
+    }
+        }
